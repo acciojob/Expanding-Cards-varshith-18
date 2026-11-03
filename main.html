@@ -1,15 +1,124 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Cards</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            gap: 10px;
+            height: 80vh;
+            max-width: 90vw;
+            width: 1200px;
+        }
+
+        .panel {
+            background-position: center;
+            background-size: cover;
+            border-radius: 50px;
+            cursor: pointer;
+            flex: 0.5;
+            overflow: hidden;
+            position: relative;
+            transition: flex 0.7s ease-in;
+        }
+
+        .panel:nth-child(1) {
+            background-image: url("https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+        }
+
+        .panel:nth-child(2) {
+            background-image: url("https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+        }
+
+        .panel:nth-child(3) {
+            background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80");
+        }
+
+        .panel:nth-child(4) {
+            background-image: url("https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80");
+        }
+
+        .panel:nth-child(5) {
+            background-image: url("https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+        }
+
+        .panel.active {
+            flex: 5;
+        }
+
+        .img-text {
+            bottom: 20px;
+            color: white;
+            left: 20px;
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            transition: opacity 0.3s ease-in 0.4s;
+        }
+
+        .panel.active .img-text {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                height: 70vh;
+                width: 95vw;
+            }
+
+            .panel:nth-of-type(4),
+            .panel:nth-of-type(5) {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <div class="container">
+        <div class="panel active" id="panel-1">
+            <h3 class="img-text">Explore the world</h3>
+        </div>
+        <div class="panel" id="panel-2">
+            <h3 class="img-text">Wild Forest</h3>
+        </div>
+        <div class="panel" id="panel-3">
+            <h3 class="img-text">City on Winter</h3>
+        </div>
+        <div class="panel" id="panel-4">
+            <h3 class="img-text">Mountain Cloud</h3>
+        </div>
+        <div class="panel" id="panel-5">
+            <h3 class="img-text">Sunny Beach</h3>
+        </div>
+    </div>
+
+    <script>
+        const panels = document.querySelectorAll(".panel");
+
+        panels.forEach((panel) => {
+            panel.addEventListener("click", () => {
+                panels.forEach((item) => item.classList.remove("active"));
+                panel.classList.add("active");
+            });
+        });
+    </script>
 
 </body>
 
